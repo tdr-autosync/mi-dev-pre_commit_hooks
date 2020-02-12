@@ -1,0 +1,4 @@
+import timezone
+
+today = timezone.now().date()
+print("Invalid month:", _(today.strftime("%B")))
