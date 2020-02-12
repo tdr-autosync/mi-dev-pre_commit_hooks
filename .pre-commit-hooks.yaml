@@ -1,0 +1,6 @@
+- id: check-const-translations
+  name: Check const translation calls.
+  description: Check for non-const translation calls.
+  entry: check-const-translations
+  language: python
+  types: [python]
