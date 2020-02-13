@@ -1,0 +1,5 @@
+[flake8]
+ignore =
+    E501,  # Line too long (this is handled by Black)
+exclude =
+    __pycache__
