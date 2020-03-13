@@ -9,10 +9,11 @@ Add this to your .pre-commit-config.yaml
 
 
 ```
-- repo: git@gitlab.com:motoinsight/infra/pre-commit-hooks.git
+- repo: https://github.com/unhaggle/pre-commit-hooks
   rev: master
   hooks:
   - id: check-const-translations
+    language_version: python3
 ```
 
 
