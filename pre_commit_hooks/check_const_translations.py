@@ -29,13 +29,11 @@ class _CheckTranslationsNodeVisitor(ast.NodeVisitor):
             if (
                 len(args) != 1
                 or not isinstance(args[0], ast.Constant)
-                or isinstance(args[0], arg.Str)
+                or isinstance(args[0], ast.Str)
                 or isinstance(args[0], ast.Bytes)
             ):
                 line = self.__lines[node.lineno - 1].lstrip()
-                print(
-                    f'File "{self.__filename}", line {node.lineno}\n  {line}'
-                )
+                print(f'File "{self.__filename}", line {node.lineno}\n  {line}')
                 self.__count += 1
         self.generic_visit(node)
 
