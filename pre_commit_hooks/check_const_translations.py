@@ -26,11 +26,10 @@ class _CheckTranslationsNodeVisitor(ast.NodeVisitor):
     def visit_Call(self, node: ast.Call):
         if getattr(node.func, "id", None) in self.TRANSLATION_FUNCTIONS:
             args = node.args
-            if (
-                len(args) != 1
-                or not isinstance(args[0], ast.Constant)
-                or isinstance(args[0], ast.Str)
-                or isinstance(args[0], ast.Bytes)
+            if len(args) != 1 or (
+                not isinstance(args[0], ast.Constant)
+                and not isinstance(args[0], ast.Str)
+                and not isinstance(args[0], ast.Bytes)
             ):
                 line = self.__lines[node.lineno - 1].lstrip()
                 print(f'File "{self.__filename}", line {node.lineno}\n  {line}')
