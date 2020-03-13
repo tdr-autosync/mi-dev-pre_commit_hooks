@@ -9,7 +9,7 @@ _REGEX = r"[^\w]_\(\)"
 class _CheckTranslationsNodeVisitor(ast.NodeVisitor):
     """
     A NodeVisitor that checks each call to a translation-function. The call
-    is expected to have only one contant parameter, no variables nor function
+    is expected to have only one constant parameter, no variables nor function
     calls.
 
     Use the TRANSLATION_FUNCTIONS constants to define which functions are
@@ -26,9 +26,16 @@ class _CheckTranslationsNodeVisitor(ast.NodeVisitor):
     def visit_Call(self, node: ast.Call):
         if getattr(node.func, "id", None) in self.TRANSLATION_FUNCTIONS:
             args = node.args
-            if len(args) != 1 or not isinstance(args[0], ast.Constant):
+            if (
+                len(args) != 1
+                or not isinstance(args[0], ast.Constant)
+                or isinstance(args[0], arg.Str)
+                or isinstance(args[0], ast.Bytes)
+            ):
                 line = self.__lines[node.lineno - 1].lstrip()
-                print(f'File "{self.__filename}", line {node.lineno}\n  {line}')
+                print(
+                    f'File "{self.__filename}", line {node.lineno}\n  {line}'
+                )
                 self.__count += 1
         self.generic_visit(node)
 
