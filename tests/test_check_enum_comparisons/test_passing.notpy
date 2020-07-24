@@ -1,0 +1,11 @@
+from enum import Enum
+
+class MyEnum(Enum):
+    A = 1
+    B = 2
+
+a = Enum.A
+b = Enum.B
+
+assert(a != b)
+assert(not a == b)

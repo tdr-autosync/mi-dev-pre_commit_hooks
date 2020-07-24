@@ -1,4 +1,4 @@
-from pre_commit_hooks.check_translations import main
+from pre_commit_hooks.check_const_translations import main
 
 
 def test_passing_file(datadir):
