@@ -1,0 +1,17 @@
+def validate_decision(self, decision_status: str) -> int:
+    """Validate if decision has been successfully retrieved
+    and if it matches any expected value for given Provider.
+
+    Return corresponding MotoCommerce decision status.
+    """
+    if (
+        not decision_status
+        or decision_status not in self.DECISION_STATUS_MAP
+    ):
+        raise InvalidCreditDecision(
+            _(
+                f"{decision_status} is not supported for "
+                f"{self.dealership.credit_app_system}"
+            )
+        )
+    return self.DECISION_STATUS_MAP[decision_status]
