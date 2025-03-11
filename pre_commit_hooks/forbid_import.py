@@ -1,12 +1,4 @@
-"""Prevent import of a module in a project.
-
-Usage:
-    python3.11 forbid_import.py <module_name_string> <help message> <directory>
-    python3.11 forbid_import.py <module_name_string> <help message> <file1> <file2> ...
-
-Example:
-    python3.11 "peb.schemas.request" "peb/schemas/response/"
-"""
+"""Prevent import of a module in a project."""
 import argparse
 import ast
 import pathlib
