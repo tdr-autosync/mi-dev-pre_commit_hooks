@@ -4,3 +4,9 @@
   entry: check-const-translations
   language: python
   types: [python]
+- id: forbid-import
+  name: Forbid import.
+  description: Forbid imports of specified modules.
+  entry: forbid-import
+  language: python
+  types: [python]
